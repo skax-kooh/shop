@@ -71,9 +71,7 @@
                         <c:forEach var="product" items="${products}">
                             <tr>
                                 <td>${product.id}</td>
-                                <td>
-                                    <a href="product?id=${product.id}">${product.name}</a>
-                                </td>
+                                <td>${product.name}</td>
                                 <td class="price">
                                     <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₩" />
                                 </td>

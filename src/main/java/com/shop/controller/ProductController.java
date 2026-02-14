@@ -12,26 +12,16 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    private final com.shop.repository.ProductRepository productRepository;
-
-    public ProductController(com.shop.repository.ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
     @GetMapping("/products")
     public String listProducts(Model model) {
-        model.addAttribute("products", productRepository.findAll());
-        return "product_list";
-    }
+        // Mock data
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(1L, "MacBook Pro", new BigDecimal("2500000"), "Apple M2 Chip, 16GB RAM"));
+        products.add(new Product(2L, "Galaxy S24", new BigDecimal("1200000"), "AI Phone, 512GB"));
+        products.add(new Product(3L, "Keyboard", new BigDecimal("150000"), "Mechanical Keyboard"));
 
-    @GetMapping("/product")
-    public String getProduct(@org.springframework.web.bind.annotation.RequestParam("id") Long id, Model model) {
-        com.shop.model.Product product = productRepository.findById(id);
-        if (product == null) {
-            return "redirect:/products";
-        }
-        model.addAttribute("product", product);
-        return "product_detail";
+        model.addAttribute("products", products);
+        return "product_list";
     }
 
     @GetMapping("/")
