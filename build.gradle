@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'com.shop'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Servlet API (Tomcat 9 compatible - javax.servlet)
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+    // JSTL (Tomcat 9 compatible)
+    implementation 'javax.servlet:jstl:1.2'
+
+    // PostgreSQL Driver
+    implementation 'org.postgresql:postgresql:42.7.1'
+
+    // Connection Pool managed by Tomcat JNDI (no HikariCP needed)
+
+    // Logging (Java 8 compatible versions)
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'ch.qos.logback:logback-classic:1.2.12'
+}
+
+war {
+    archiveFileName = 'ROOT.war'
+}
