@@ -5,31 +5,21 @@ plugins {
 
 group = 'com.shop'
 version = '1.0-SNAPSHOT'
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // Servlet API (Tomcat 9 compatible - javax.servlet)
-    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
-    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
-
-    // JSTL (Tomcat 9 compatible)
+    implementation 'org.springframework:spring-webmvc:5.3.31'
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
     implementation 'javax.servlet:jstl:1.2'
-
-    // PostgreSQL Driver
-    implementation 'org.postgresql:postgresql:42.7.1'
-
-    // Connection Pool managed by Tomcat JNDI (no HikariCP needed)
-
-    // Logging (Java 8 compatible versions)
-    implementation 'org.slf4j:slf4j-api:1.7.36'
-    implementation 'ch.qos.logback:logback-classic:1.2.12'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.springframework:spring-test:5.3.31'
 }
 
-war {
-    archiveFileName = 'ROOT.war'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
