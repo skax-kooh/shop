@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 배포 전 준비 작업
-DEPLOY_DIR="/data/web"
+DEPLOY_DIR="/data/war/web"
 
 echo "Preparing for deployment..."
 

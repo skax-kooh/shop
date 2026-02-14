@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 배포 후 작업
-DEPLOY_DIR="/data/web"
+DEPLOY_DIR="/data/war/web"
 TEMP_DIR="/tmp/codedeploy"
 TOMCAT_HOME=$(find /software/tomcat/servers -maxdepth 1 -type d -name "web*1" | head -n 1)
 TOMCAT_WEBAPPS="$TOMCAT_HOME/webapps"
