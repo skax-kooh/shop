@@ -68,12 +68,12 @@ gradlew.bat clean war
 ### 3. Tomcat에 배포
 ```bash
 # WAR 파일을 Tomcat webapps 디렉토리에 복사
-copy build\libs\shop.war C:\tomcat\webapps\
+copy build\libs\ROOT.war C:\tomcat\webapps\
 ```
 
 ### 4. 애플리케이션 실행
 ```
-http://localhost:8080/shop/
+http://localhost:8080/
 ```
 
 상세한 배포 가이드는 [DEPLOYMENT.md](DEPLOYMENT.md)를 참고하세요.

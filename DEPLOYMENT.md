@@ -57,7 +57,7 @@ gradlew.bat clean war
 ./gradlew clean war
 ```
 
-빌드가 완료되면 `build/libs/shop.war` 파일이 생성됩니다.
+빌드가 완료되면 `build/libs/ROOT.war` 파일이 생성됩니다.
 
 ---
 
@@ -67,7 +67,7 @@ gradlew.bat clean war
 
 1. Tomcat의 `webapps` 디렉토리에 WAR 파일 복사:
 ```cmd
-copy build\libs\shop.war C:\tomcat\webapps\
+copy build\libs\ROOT.war C:\tomcat\webapps\
 ```
 
 2. Tomcat 시작:
@@ -82,7 +82,7 @@ C:\tomcat\bin\startup.bat
 1. 브라우저에서 Tomcat Manager 접속:
    - URL: `http://localhost:8080/manager/html`
 
-2. "WAR file to deploy" 섹션에서 `shop.war` 파일 선택 후 업로드
+2. "WAR file to deploy" 섹션에서 `ROOT.war` 파일 선택 후 업로드
 
 ---
 
@@ -91,13 +91,13 @@ C:\tomcat\bin\startup.bat
 배포 완료 후 다음 URL로 접속:
 
 ```
-http://localhost:8080/shop/
+http://localhost:8080/
 ```
 
 또는
 
 ```
-http://localhost:8080/shop/products
+http://localhost:8080/products
 ```
 
 ---
@@ -176,8 +176,8 @@ IntelliJ IDEA나 Eclipse에서:
 
 ## 참고사항
 
-- WAR 파일명: `shop.war`
-- Context Path: `/shop`
+- WAR 파일명: `ROOT.war`
+- Context Path: `/`
 - 기본 포트: `8080` (Tomcat 설정에 따라 변경 가능)
 - Java Version: 17
 - Servlet API: Jakarta Servlet 6.0
