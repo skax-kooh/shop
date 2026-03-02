@@ -8,3 +8,10 @@ hooks:
     - location: scripts/deploy.sh
       timeout: 300
       runas: root
+permissions:
+  - object: scripts/deploy.sh
+    pattern: "**"
+    owner: root
+    mode: 755
+    type:
+      - file
