@@ -158,15 +158,8 @@
             <body>
 
                 <header>
-                    <h1
-                        style="color: var(--t-purple); font-weight: 900; font-style: italic; font-size: 2em; margin-bottom: 30px;">
-                        T</h1>
-                    <div class="nav-tabs">
-                        <div class="nav-tab active">최신순</div>
-                        <div class="nav-tab">낮은 가격순</div>
-                        <div class="nav-tab">높은 가격순</div>
-                        <div class="nav-tab">T 추천상품</div>
-                    </div>
+                    <h1 style="color: var(--t-purple); font-weight: 900; font-size: 2em; margin-bottom: 20px;">
+                        Lab Shop</h1>
                 </header>
 
                 <div class="container">

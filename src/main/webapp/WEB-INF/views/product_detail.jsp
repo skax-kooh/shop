@@ -191,8 +191,9 @@
 
                 <header>
                     <a href="<c:url value='/products'/>"
-                        style="text-decoration: none; color: var(--t-purple); font-weight: 900; font-style: italic; font-size: 1.5em;">T</a>
-                    <div style="font-size: 0.9em; color: var(--t-gray-700);">T 다이렉트샵</div>
+                        style="text-decoration: none; color: var(--t-purple); font-weight: 900; font-size: 1.5em;">Lab
+                        Shop</a>
+                    <div style="font-size: 0.9em; color: var(--t-gray-700);">Premium Store</div>
                 </header>
 
                 <div class="container">
@@ -252,13 +253,30 @@
                                                 currencySymbol="₩" />
                                         </span>
                                     </div>
-                                    <div class="button-group">
-                                        <div class="btn btn-outline">상담하기</div>
+                                    <div class="button-group" style="grid-template-columns: 1fr;">
                                         <div class="btn btn-primary">다음</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            // Color circle interaction
+                            document.querySelectorAll('.color-circle').forEach(circle => {
+                                circle.addEventListener('click', () => {
+                                    document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('active'));
+                                    circle.classList.add('active');
+                                });
+                            });
+
+                            // Capacity box interaction
+                            document.querySelectorAll('.capacity-box').forEach(box => {
+                                box.addEventListener('click', () => {
+                                    document.querySelectorAll('.capacity-box').forEach(b => b.classList.remove('active'));
+                                    box.classList.add('active');
+                                });
+                            });
+                        </script>
                     </c:if>
 
                     <c:if test="${empty product}">
