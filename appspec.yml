@@ -7,11 +7,11 @@ hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       timeout: 300
-      runas: root
+      runas: appadmin
 permissions:
   - object: scripts/deploy.sh
     pattern: "**"
-    owner: root
-    mode: 755
+    owner: appadmin
+    mode: 770
     type:
       - file
