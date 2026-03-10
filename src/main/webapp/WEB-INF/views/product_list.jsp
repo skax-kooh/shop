@@ -158,8 +158,16 @@
             <body>
 
                 <header>
-                    <h1 style="color: var(--t-purple); font-weight: 900; font-size: 2em; margin-bottom: 20px;">
-                        Lab Shop</h1>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
+                        <h1 style="color: var(--t-purple); font-weight: 900; font-size: 2em; margin: 0;">Lab Shop</h1>
+                        <a href="<c:url value='/cart'/>"
+                            style="text-decoration: none; color: var(--t-gray-900); font-weight: 600;">
+                            장바구니 <span
+                                style="background: var(--t-red); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em;">${sessionScope.cart
+                                != null ? sessionScope.cart.totalQuantity : 0}</span>
+                        </a>
+                    </div>
                 </header>
 
                 <div class="container">
@@ -197,6 +205,15 @@
                                         <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₩" />
                                     </div>
                                     <div class="badge-arrival">#바로도착</div>
+                                    <div style="margin-top: 15px;">
+                                        <form action="<c:url value='/cart/add'/>" method="post">
+                                            <input type="hidden" name="id" value="${product.id}">
+                                            <button type="submit"
+                                                style="width: 100%; padding: 10px; background: var(--t-purple); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                                                장바구니 담기
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </c:forEach>

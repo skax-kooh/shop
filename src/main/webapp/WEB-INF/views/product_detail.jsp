@@ -193,7 +193,15 @@
                     <a href="<c:url value='/products'/>"
                         style="text-decoration: none; color: var(--t-purple); font-weight: 900; font-size: 1.5em;">Lab
                         Shop</a>
-                    <div style="font-size: 0.9em; color: var(--t-gray-700);">Premium Store</div>
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <span style="font-size: 0.9em; color: var(--t-gray-700);">Premium Store</span>
+                        <a href="<c:url value='/cart'/>"
+                            style="text-decoration: none; color: var(--t-gray-900); font-weight: 600;">
+                            장바구니 <span
+                                style="background: var(--t-red); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em;">${sessionScope.cart
+                                != null ? sessionScope.cart.totalQuantity : 0}</span>
+                        </a>
+                    </div>
                 </header>
 
                 <div class="container">
@@ -254,7 +262,13 @@
                                         </span>
                                     </div>
                                     <div class="button-group" style="grid-template-columns: 1fr;">
-                                        <div class="btn btn-primary">다음</div>
+                                        <form action="<c:url value='/cart/add'/>" method="post">
+                                            <input type="hidden" name="id" value="${product.id}">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <!-- Simple default for now -->
+                                            <button type="submit" class="btn btn-primary" style="width: 100%;">장바구니
+                                                담기</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
