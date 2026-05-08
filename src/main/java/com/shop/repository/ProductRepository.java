@@ -1,31 +1,47 @@
 package com.shop.repository;
 
 import com.shop.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class ProductRepository {
 
-    private final List<Product> products = new ArrayList<>();
+    private final JdbcTemplate jdbcTemplate;
 
-    public ProductRepository() {
-        products.add(new Product(1L, "MacBook Pro", new BigDecimal("2500000"), "Apple M2 Chip, 16GB RAM"));
-        products.add(new Product(2L, "Galaxy S24", new BigDecimal("1200000"), "AI Phone, 512GB"));
-        products.add(new Product(3L, "Keyboard", new BigDecimal("150000"), "Mechanical Keyboard"));
+    @Autowired
+    public ProductRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
+    private final RowMapper<Product> productRowMapper = new RowMapper<>() {
+        @Override
+        public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Product product = new Product();
+            product.setId(rs.getLong("product_id"));
+            product.setName(rs.getString("name"));
+            product.setPrice(rs.getBigDecimal("price"));
+            product.setDescription(rs.getString("description"));
+            return product;
+        }
+    };
+
     public List<Product> findAll() {
-        return products;
+        String sql = "SELECT product_id, name, price, description FROM product WHERE is_active = 1 ORDER BY product_id";
+        return jdbcTemplate.query(sql, productRowMapper);
     }
 
     public Optional<Product> findById(Long id) {
-        return products.stream()
-                .filter(product -> product.getId().equals(id))
-                .findFirst();
+        String sql = "SELECT product_id, name, price, description FROM product WHERE product_id = ?";
+        List<Product> results = jdbcTemplate.query(sql, productRowMapper, id);
+        return results.stream().findFirst();
     }
 }
+
